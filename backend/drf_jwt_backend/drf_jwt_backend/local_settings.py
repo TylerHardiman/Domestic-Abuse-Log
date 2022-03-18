@@ -1,8 +1,8 @@
-SECRET_KEY = 'django-insecure-_3@w5&m_u$%fv5g@d)_=@8!nd#65($1*c#q9tf3mve#b)lc*(g'
+SECRET_KEY = 'django-insecure-J+OeQ8UNz272bjpe2YdOtY3NgzpUnlkQT8Tk2+QG'
 DATABASES = {
     'default': {
         'ENGINE': 'mysql.connector.django',
-        'NAME': 'domestic_abuse_logs',
+        'NAME': 'domestic_abuse_db',
         'USER': 'root',
         'PASSWORD': 'BingBong',
         'HOST': '127.0.0.1',

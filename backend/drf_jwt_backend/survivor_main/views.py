@@ -4,7 +4,8 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import api_view, permission_classes
 
 
-from .models import Survivor, AbuseLog
+from .models import Survivor
+from .models import AbuseLog
 from serializers import SurvivorSerializer, AbuseLogSerializer
 
 # <<<<<<<<<<<<<<<<< EXAMPLE FOR STARTER CODE USE <<<<<<<<<<<<<<<<<
