@@ -19,7 +19,7 @@ def get_all_survivors(request):
     return Response(serializer.data)
 
 @api_view(['GET'])
-@permission_classes([AllowAny])
+@permission_classes([IsAuthenticated])
 def get_abuselog(request):
     AbuseLog = AbuseLog.objects.all()
     serializer = AbuseLogSerializer(AbuseLog, many=True)
@@ -28,9 +28,9 @@ def get_abuselog(request):
 
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
-def Survivor_victim(request):
+def survivor_victim(request):
     print(
-        'Survivor ', f"{request.Survivor.id} {request.Survivor.email} {request.Survivor.Survivorname}")
+        'Survivor ', f"{request.Survivor.id} {request.Survivor.email} {request.Survivor.first_name} {request.Survivor.last_name}")
     if request.method == 'POST':
         serializer = SurvivorSerializer(data=request.data)
         if serializer.is_valid():
@@ -38,6 +38,22 @@ def Survivor_victim(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     elif request.method == 'GET':
-        cars = Survivor.objects.filter(Survivor_id=request.Survivor.id)
-        serializer = SurvivorSerializer(cars, many=True)
+        survivors = Survivor.objects.filter(Survivor_id=request.Survivor.id)
+        serializer = SurvivorSerializer(survivors, many=True)
+        return Response(serializer.data)
+    
+@api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated])
+def survivor_log(request):
+    print(
+        'AbuseLog ', f"{request.AbuseLog.id} {request.AbuseLog.post} {request.AbuseLog.name} {request.AbuseLog.email} {request.AbuseLog.body} {request.AbuseLog.created_on} {request.AbuseLog.active}")
+    if request.method == 'POST':
+        serializer = SurvivorSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(AbuseLog=request.AbuseLog)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == 'GET':
+        AbuseLog = AbuseLog.objects.filter(AbuseLog_id=request.AbuseLogid)
+        serializer = AbuseLogSerializer(AbuseLog, many=True)
         return Response(serializer.data)

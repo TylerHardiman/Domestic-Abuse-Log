@@ -4,6 +4,6 @@ from .import views
 
 urlpatterns = [
     path('', views.get_all_survivors),
-    path('all/', views.Survivor_victim),
+    path('all/', views.survivor_victim),
     path('all/', views.get_abuselog),
 ]
