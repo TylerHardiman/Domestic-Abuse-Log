@@ -1,22 +1,16 @@
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
-from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from django.contrib.auth.password_validation import validate_password
+from.models import Survivor
 
-from survivor_main.models import Survivor
-
-
-
-
-class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+class MyTokenObtainPairSerializer():
     @classmethod
     def get_token(cls, Survivor):
         token = super().get_token(Survivor)
-
         token["first_name"] = Survivor.first_name
         token["last_name"] = Survivor.last_name
         token["email"] = Survivor.email
-        token["password"] = Survivor.password
+        token["password"] = Survivor.pasword
         return token
 
 
@@ -31,8 +25,8 @@ class RegistrationSerializer(serializers.ModelSerializer):
         model = Survivor
         # If added new columns through the Survivor model, add them in the fields
         # list as seen below
-        fields = ( 'first_name', 'last_name',
-                  'email', 'password')
+        fields = ('survivorname', 'password', 'email',
+                  'first_name', 'last_name')
 
     def create(self, validated_data):
 

@@ -36,9 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'authentication.apps.AuthenticationConfig',
     'corsheaders',
-    'survivor_main.apps.SurvivorConfig'  # This app is for example use only
+    'survivor_main.apps.SurvivorsConfig'
 ]
 
 MIDDLEWARE = [

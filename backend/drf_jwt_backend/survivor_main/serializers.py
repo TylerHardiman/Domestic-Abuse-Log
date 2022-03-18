@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from .models import AbuseLog
 from .models import Survivor
 
 # <<<<<<<<<<<<<<<<< EXAMPLE FOR STARTER CODE USE <<<<<<<<<<<<<<<<<
@@ -7,11 +8,11 @@ from .models import Survivor
 class SurvivorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Survivor
-        fields = ['id', 'warrior', 'email', 'datetime', 'user_id']
+        fields = ['id', 'user', 'first_name', 'last_name', 'email' 'user_id']
         depth = 1
         
 class AbuseLogSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Survivor
-        fields = ['id', 'warrior', 'email', 'datetime', 'user_id']
+        model = AbuseLog
+        fields = ['post', 'name', 'email', 'body', 'create_on', 'active', 'user_id']
         depth = 1

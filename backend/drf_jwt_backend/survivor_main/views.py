@@ -2,8 +2,10 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import api_view, permission_classes
-from .models import Survivor
-from .serializers import SurvivorSerializer
+
+
+from .models import Survivor, AbuseLog
+from serializers import SurvivorSerializer, AbuseLogSerializer
 
 # <<<<<<<<<<<<<<<<< EXAMPLE FOR STARTER CODE USE <<<<<<<<<<<<<<<<<
 
@@ -11,8 +13,15 @@ from .serializers import SurvivorSerializer
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def get_all_survivors(request):
-    cars = Survivor.objects.all()
-    serializer = SurvivorSerializer(cars, many=True)
+    Survivor = Survivor.objects.all()
+    serializer = SurvivorSerializer(Survivor, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def get_abuselog(request):
+    AbuseLog = AbuseLog.objects.all()
+    serializer = AbuseLogSerializer(AbuseLog, many=True)
     return Response(serializer.data)
 
 
