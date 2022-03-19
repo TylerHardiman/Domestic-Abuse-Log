@@ -1,4 +1,4 @@
-SECRET_KEY = 'django-insecure-J+OeQ8UNz272bjpe2YdOtY3NgzpUnlkQT8Tk2+QG'
+SECRET_KEY = 'django-insecure-_3@w5&m_u$%fv5g@d)_=@8!nd#65($1*c#q9tf3mve#b)lc*(g'
 DATABASES = {
     'default': {
         'ENGINE': 'mysql.connector.django',
