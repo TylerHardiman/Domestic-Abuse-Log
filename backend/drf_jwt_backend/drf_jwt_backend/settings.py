@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
-    'drf_jwt_backend'
+    'AbuseLogsConfig',         
 ]
 
 MIDDLEWARE = [
@@ -119,6 +119,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': ('rest_framework_simplejwt.authentication.JWTAuthentication',)
+    
 }
 
 SIMPLE_JWT = {
@@ -149,6 +150,6 @@ SIMPLE_JWT = {
 }
 
 try:
-    from drf_jwt_backend.settings import *
+    from drf_jwt_backend.local_settings import *
 except ImportError:
     pass

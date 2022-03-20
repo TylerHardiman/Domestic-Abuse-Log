@@ -2,11 +2,8 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import api_view, permission_classes
-
-
-from .models import Survivor
-from .models import AbuseLog
-from serializers import SurvivorSerializer, AbuseLogSerializer
+from users.models import AbuseLog, Survivor
+from users.serializers import AbuseLogSerializer, SurvivorSerializer
 
 # <<<<<<<<<<<<<<<<< EXAMPLE FOR STARTER CODE USE <<<<<<<<<<<<<<<<<
 
@@ -14,46 +11,48 @@ from serializers import SurvivorSerializer, AbuseLogSerializer
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def get_all_survivors(request):
-    Survivor = Survivor.objects.all()
-    serializer = SurvivorSerializer(Survivor, many=True)
-    return Response(serializer.data)
-
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def get_abuselog(request):
-    AbuseLog = AbuseLog.objects.all()
-    serializer = AbuseLogSerializer(AbuseLog, many=True)
+    survivors = Survivor.objects.all()
+    serializer = SurvivorSerializer(survivors, many=True)
     return Response(serializer.data)
 
 
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
-def survivor_victim(request):
+def survivor_survivors(request):
     print(
-        'Survivor ', f"{request.Survivor.id} {request.Survivor.email} {request.Survivor.first_name} {request.Survivor.last_name}")
+        'survivor ', f"{request.survivor.id} {request.survivor.email} {request.survivor.first_name} {request.survivor.first_name}")
     if request.method == 'POST':
         serializer = SurvivorSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save(Survivor=request.Survivor)
+            serializer.save(survivor=request.survivor)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     elif request.method == 'GET':
-        survivors = Survivor.objects.filter(Survivor_id=request.Survivor.id)
+        survivors = Survivor.objects.filter(survivor_id=request.survior.id)
         serializer = SurvivorSerializer(survivors, many=True)
         return Response(serializer.data)
     
-@api_view(['GET', 'POST'])
+    
+@api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def survivor_log(request):
+def get_abuselog(request):
+    abuselog = AbuseLog.objects.all()
+    serializer = AbuseLogSerializer(abuselog, many=True)
+    return Response(serializer.data)
+    
+api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated])
+def survivor_abuselog(request):
     print(
-        'AbuseLog ', f"{request.AbuseLog.id} {request.AbuseLog.post} {request.AbuseLog.name} {request.AbuseLog.email} {request.AbuseLog.body} {request.AbuseLog.created_on} {request.AbuseLog.active}")
+        'abuselog ', f"{request.abuselog.id} {request.abuselog.post} {request.abuselog.name} {request.abuselog.email} {request.abuselog.body} {request.abuselog.created_on} {request.abuselog.active}")
     if request.method == 'POST':
         serializer = SurvivorSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save(AbuseLog=request.AbuseLog)
+            serializer.save(abuselog=request.abuselog)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     elif request.method == 'GET':
-        AbuseLog = AbuseLog.objects.filter(AbuseLog_id=request.AbuseLogid)
-        serializer = AbuseLogSerializer(AbuseLog, many=True)
+        abuselog = AbuseLog.objects.filter(abuselog_id=request.abuselog.id)
+        serializer = AbuseLogSerializer(abuselog, many=True)
         return Response(serializer.data)
+

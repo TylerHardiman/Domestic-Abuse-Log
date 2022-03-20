@@ -1,19 +1,21 @@
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
+from rest_framework.authentication import TokenAuthentication
 from django.contrib.auth.password_validation import validate_password
-from .models import Survivor
+from users.models import Survivor
 
 
 
-class MyTokenObtainPairSerializer():
+class MyTokenObtainPairSerializer(TokenAuthentication):
     @classmethod
-    def get_token(cls, Survivor):
-        token = super().get_token(Survivor)
+    def get_token(cls, survivor):
+        token = super().get_token(survivor)
 
-        token["first_name"] = Survivor.first_name
-        token["last_name"] = Survivor.last_name
-        token["email"] = Survivor.email
-        token["password"] = Survivor.password
+        token["survivorname"] = survivor.survivorname
+        token["first_name"] = survivor.first_name
+        token["last_name"] = survivor.last_name
+        token["email"] = survivor.email
+        token["password"] = survivor.password
         return token
 
 
@@ -26,22 +28,22 @@ class RegistrationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Survivor
-        # If added new columns through the Survivor model, add them in the fields
+        # If added new columns through the survivor model, add them in the fields
         # list as seen below
-        fields = ( 'first_name', 'last_name',
-                  'email', 'password')
+        fields = ('survivorname', 'password', 'email',
+                  'first_name', 'last_name')
 
     def create(self, validated_data):
 
-        Survivor = Survivor.objects.create(
+        survivor = Survivor.objects.create(
+            survivorname=validated_data['survivorname'],
+            email=validated_data['email'],
             first_name=validated_data['first_name'],
             last_name=validated_data['last_name'],
-            email=validated_data['email'],
-            password=validated_data['password'],
-            # If added new columns through the Survivor model, add them in this
+            # If added new columns through the survivor model, add them in this
             # create method call in the format as seen above
         )
-        Survivor.set_password(validated_data['password'])
-        Survivor.save()
+        survivor.set_password(validated_data['password'])
+        survivor.save()
 
-        return Survivor
+        return survivor
