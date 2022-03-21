@@ -4,26 +4,26 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 
-const HomePage = () => {
+const AbuseLogPage = () => {
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
   // The "token" value is the JWT token that you will send in the header of any request requiring authentication
   const [user, token] = useAuth();
-  const [users, setUsers] = useState([]);
+  const [abuselog, setAbuseLogs] = useState([]);
 
   useEffect(() => {
-    const fetchUsers = async () => {
+    const fetchAbuselog = async () => {
       try {
-        let response = await axios.get("http://127.0.0.1:8000/api/users/", {
+        let response = await axios.get("http://127.0.0.1:8000/api/abuselogs/", {
           headers: {
             Authorization: "Bearer " + token,
           },
         });
-        setUsers(response.data);
+        setAbuseLogs(response.data);
       } catch (error) {
         console.log(error.message);
       }
     };
-    fetchUsers();
+    fetchAbuselog();
   }, [token]);
   return (
     <div className="container">
@@ -38,4 +38,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default AbuseLogPage;

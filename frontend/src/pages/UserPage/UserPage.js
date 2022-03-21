@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 
-const HomePage = () => {
+const UserPage = () => {
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
   // The "token" value is the JWT token that you will send in the header of any request requiring authentication
   const [user, token] = useAuth();
@@ -38,4 +38,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default UserPage;
