@@ -1,10 +1,10 @@
 from django.apps import AppConfig
 
 
-class SurvivorsConfig(AppConfig):
+class UsersConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'survivor'
+    name = 'users'
     
 class AbuseLogsConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'abuselog'
+    name = 'abuselogs'

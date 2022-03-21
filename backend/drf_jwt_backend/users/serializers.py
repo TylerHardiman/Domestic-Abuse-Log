@@ -1,17 +1,17 @@
 from rest_framework import serializers
-from users.models import AbuseLog, Survivor
+from .models import AbuseLog, User
 
 # <<<<<<<<<<<<<<<<< EXAMPLE FOR STARTER CODE USE <<<<<<<<<<<<<<<<<
 
 
-class SurvivorSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Survivor
-        fields = ['id', 'first_name', 'last_name', 'email' 'survivor_id']
+        model = User
+        fields = ['id', 'first_name', 'last_name', 'email' 'user_id']
         depth = 1
         
 class AbuseLogSerializer(serializers.ModelSerializer):
     class Meta:
         model = AbuseLog
-        fields = ['post', 'name', 'email', 'body', 'create_on', 'active', 'survivor_id']
+        fields = ['id', 'post', 'name', 'email', 'body', 'create_on', 'active', 'user_id']
         depth = 1

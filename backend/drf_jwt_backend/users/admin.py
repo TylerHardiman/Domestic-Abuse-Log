@@ -1,6 +1,9 @@
 from django.contrib import admin
-from drf_jwt_backend.users.models import Survivor, AbuseLog
+
+
+from .models import  User, AbuseLog
+
 
 # Register your models here.
-admin.site.register(Survivor)
+admin.site.register(User)
 admin.site.register(AbuseLog)

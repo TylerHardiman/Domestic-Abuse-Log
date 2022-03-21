@@ -1,18 +1,18 @@
 from django.db import models
-from users.models import Survivor, AbuseLog
+from django.contrib.auth.models import User
 # Create your models here.
 
 # <<<<<<<<<<<<<<<<< EXAMPLE FOR STARTER CODE USE <<<<<<<<<<<<<<<<<
 
 
-class Survivor(models.Model):
-    survivor = models.ForeignKey(Survivor, on_delete=models.CASCADE)
+class User(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=100)
     email = models.CharField(max_length=100)
     
 class AbuseLog(models.Model):
-    abuseLog = models.ForeignKey(AbuseLog, on_delete=models.CASCADE,related_name='comments')
+    log = models.ForeignKey(User, on_delete=models.CASCADE,related_name='comments')
     post = models.CharField(max_length=80)
     name = models.CharField(max_length=80)
     email = models.EmailField()

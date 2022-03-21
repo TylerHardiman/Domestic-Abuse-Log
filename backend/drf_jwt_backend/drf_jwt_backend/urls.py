@@ -16,12 +16,10 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
-from django.contrib.auth import authenticate
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/authenticate/', include('authenticate.urls')),
-    path('api/auth/survivors/', include('survivors.urls')),
-    path('api/auth/abuselogs/', include('abuselogs.urls')),
+    path('api/auth/', include('authentication.urls')),
+    path('api/auth/users/', include('users.urls')),
 ]
