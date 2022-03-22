@@ -28,10 +28,12 @@ const AbuseLogPage = () => {
   return (
     <div className="container">
       <h1>You are stronger then you know {user.username}!</h1>
-      {user &&
-        user.map((user) => (
-          <p key={user.id}>
-            {user.first_name} {user.last_name} {user.email}
+      {abuselog &&
+        abuselog.map((abuselog) => (
+          <p key={abuselog.id}>
+            {abuselog.log} {abuselog.post} {abuselog.name} {abuselog.log}
+            {abuselog.email} {abuselog.body} {abuselog.created_on} {abuselog.active}
+            
           </p>
         ))}
     </div>

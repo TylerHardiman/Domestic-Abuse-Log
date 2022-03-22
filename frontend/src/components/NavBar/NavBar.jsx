@@ -10,9 +10,19 @@ const Navbar = () => {
   return (
     <div className="navBar">
       <ul>
-        <li className="brand">
+      <li className='mr-auto mb-2 mb-lg-0'>
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
             <b>Domestic Abuse Tracker</b>
+          </Link>
+          <br>
+          </br>      
+          <Link to="/resources" style={{ textDecoration: "none", color: "white" }}>
+            <b>Resources</b>
+          </Link>
+          <br>
+          </br>
+          <Link to="/commentbox" style={{ textDecoration: "none", color: "white" }}>
+            <b>Support Forum</b>
           </Link>
         </li>
         <li>

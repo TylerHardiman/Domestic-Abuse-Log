@@ -13,7 +13,7 @@ const UserPage = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        let response = await axios.get("http://127.0.0.1:8000/api/users/", {
+        let response = await axios.get("http://127.0.0.1:8000/api/UserPage/", {
           headers: {
             Authorization: "Bearer " + token,
           },

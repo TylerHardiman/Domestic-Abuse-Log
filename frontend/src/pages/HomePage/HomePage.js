@@ -13,7 +13,7 @@ const HomePage = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        let response = await axios.get("http://127.0.0.1:8000/api/users/", {
+        let response = await axios.get("http://127.0.0.1:8000/users/", {
           headers: {
             Authorization: "Bearer " + token,
           },
@@ -28,7 +28,7 @@ const HomePage = () => {
   return (
     <div className="container">
       <h1>You are stronger then you know {user.username}!</h1>
-      {user &&
+      {users &&
         user.map((user) => (
           <p key={user.id}>
             {user.first_name} {user.last_name} {user.email}
