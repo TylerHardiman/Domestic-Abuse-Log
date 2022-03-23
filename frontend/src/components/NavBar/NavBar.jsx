@@ -16,7 +16,7 @@ const Navbar = () => {
           </Link>
           <br>
           </br>      
-          <Link to="/resources" style={{ textDecoration: "none", color: "white" }}>
+          <Link to="/resourcepage" style={{ textDecoration: "none", color: "white" }}>
             <b>Resources</b>
           </Link>
           <br>

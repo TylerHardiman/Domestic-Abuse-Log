@@ -6,15 +6,14 @@ import "./App.css";
 // Pages Imports
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
-
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
-import Footer from "./components/Footer/Footer";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
 import HomePage from "./pages/HomePage/HomePage";
 import CommentBox from "./components/CommentForum/CommentBox";
+import ResourcePage from "./pages/SupportPage/SupportResources";
 
 function App() {
 
@@ -25,7 +24,8 @@ function App() {
         {/* Routes that needs a navbar will need to go as children of this Route component */}
         <Route path="/" element={<LayoutsWithNavbar />}>
           <Route path="/" element={<div>Domestic Abuse Tracker</div>} />
-          <Route path="/resources" element={<Resources Component={Resources}/>} />
+          <Route path="/homepage" element={<HomePage Component={HomePage}/>} />
+          <Route path="/resourcepage" element={<ResourcePage Component={ResourcePage}/>} />
           <Route path="/commentbox" element={<CommentBox component={CommentBox}/>} />
         </Route>
 
@@ -56,31 +56,5 @@ function App() {
     );
   }
   
-
-
-  
-  return (
-    <div>
-      <Navbar />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <PrivateRoute>
-              <LoginPage />
-              <RegisterPage />
-              <HomePage />
-
-            </PrivateRoute>
-          }
-        />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/homepage" element={<HomePage />} />
-      </Routes>
-      <Footer />
-    </div>
-  );
 }
-
 export default App;
