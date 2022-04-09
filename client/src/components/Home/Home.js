@@ -63,6 +63,8 @@ const Home = () => {
                 variant="outlined"
               />
               <Button onClick={searchPost} className={classes.searchButton} variant="contained" color="primary">Search</Button>
+              <br />
+              <Button href="/supportresources" className={classes.searchButton} variant="contained" color="primary">Support Resources</Button>
             </AppBar>
             <Form currentId={currentId} setCurrentId={setCurrentId} />
             {(!searchQuery && !tags.length) && (
