@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { TextField, Button, Typography, Paper } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import FileBase from 'react-file-base64';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import ChipInput from 'material-ui-chip-input';
-
+import DAStext from '../../images/DAStext.svg';
 import { createPost, updatePost } from '../../actions/posts';
 import useStyles from './styles';
 
@@ -40,11 +40,9 @@ const Form = ({ currentId, setCurrentId }) => {
 
   if (!user?.result?.name) {
     return (
-      <Paper className={classes.paper} elevation={6}>
-        <Typography variant="h6" align="center">
-          <h2>Please Sign In to create your own memories &rsquo;</h2>
-        </Typography>
-      </Paper>
+      <Link to="/supportresources" className={classes.brandContainer}>
+        <img component={Link} to="/supportresources" src={DAStext} alt="icon" height="75px" />
+      </Link>
     );
   }
 
