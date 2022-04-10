@@ -43,7 +43,6 @@ const Post = ({ post, setCurrentId }) => {
 
     return <><ThumbUpAltOutlined fontSize="small" />&nbsp;Like</>;
   };
-
   const openPost = () => {
     // dispatch(getPost(post._id, history));
 

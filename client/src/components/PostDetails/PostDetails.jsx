@@ -62,6 +62,7 @@ const Post = () => {
           <Typography variant="body1"><strong>Realtime Chat - coming soon!</strong></Typography>
           <Divider style={{ margin: '20px 0' }} />
           <CommentSection post={post} />
+          <div className="sharethis-inline-reaction-buttons" />
           <Divider style={{ margin: '20px 0' }} />
         </div>
         <div className={classes.imageSection}>

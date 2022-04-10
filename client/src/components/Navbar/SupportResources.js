@@ -59,7 +59,7 @@ function SupportResources() {
         <tr>
           <td><h3><center>National Resource Center on Domestic Violence   </center></h3></td>
           <td><h3><center>1-800-537-2238</center></h3></td>
-          <td><h3><center><a href="https://www.nrcdv.org/ and https://vawnet.org/">www.nrcdv.org and www.vawnet.org</a></center></h3></td>
+          <td><h3><center><a href="https://www.nrcdv.org/">nrcdv.org</a></center></h3></td>
         </tr>
       </table>
     </div>
