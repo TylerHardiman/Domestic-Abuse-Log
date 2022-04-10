@@ -16,7 +16,7 @@ const Post = ({ post, setCurrentId }) => {
   const classes = useStyles();
 
   const openPost = () => {
-    // dispatch(getPost(post._id, history));
+    //  dispatch(getPost(post._id, history));
 
     history.push(`/posts/${post._id}`);
   };
