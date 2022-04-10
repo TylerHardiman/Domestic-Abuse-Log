@@ -74,6 +74,7 @@ const Home = () => {
             )}
           </Grid>
         </Grid>
+        <div className="sharethis-inline-follow-buttons" />
       </Container>
     </Grow>
   );

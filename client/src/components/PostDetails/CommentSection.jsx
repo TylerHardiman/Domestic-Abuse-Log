@@ -44,6 +44,7 @@ const CommentSection = ({ post }) => {
           </Button>
         </div>
       </div>
+      <div className="sharethis-inline-reaction-buttons" />
     </div>
   );
 };
