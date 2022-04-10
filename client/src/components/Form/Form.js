@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import FileBase from 'react-file-base64';
 import { useHistory, Link } from 'react-router-dom';
 import ChipInput from 'material-ui-chip-input';
-import DAStext from '../../images/DAStext.svg';
+import ContactUs from '../../images/ContactUs.svg';
 import { createPost, updatePost } from '../../actions/posts';
 import useStyles from './styles';
 
@@ -40,8 +40,8 @@ const Form = ({ currentId, setCurrentId }) => {
 
   if (!user?.result?.name) {
     return (
-      <Link to="/supportresources" className={classes.brandContainer}>
-        <img component={Link} to="/supportresources" src={DAStext} alt="icon" height="75px" />
+      <Link to="/contactus" className={classes.brandContainer}>
+        <center><img component={Link} to="/contactus" src={ContactUs} alt="icon" height="90px" /></center>
       </Link>
     );
   }

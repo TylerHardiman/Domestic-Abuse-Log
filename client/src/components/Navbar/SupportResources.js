@@ -1,11 +1,12 @@
 import React from 'react';
 import './supportresources.css';
-import '../../images/AbuseAgencyResources.svg';
+import './HopeStartsHere.svg';
 
 function SupportResources() {
   return (
     <div className="App">
-      <table>
+      <table className="styled-table">
+        <image src="/HopeStartsHere.svg" alt="SVG as an image" />
         <tr>
           <th><h1>Agency</h1></th>
           <th><h1>Phone</h1></th>
